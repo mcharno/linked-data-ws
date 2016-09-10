@@ -1,9 +1,8 @@
 package net.charno.web.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by charno on 9/3/16.
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/dbpedia")
 public class DbpediaController {
 
-    @RequestMapping("/lookup/{term}")
-    @ResponseBody
-    public String lookupTerm(@RequestParam String term) {
-        return "Your looking up " + term;
+    @RequestMapping(value="/lookup/{term}")
+    public String lookupTerm(@PathVariable String term, ModelAndView model) {
+        model.addObject(term);
+        return "dbpedia-term";
     }
 }
