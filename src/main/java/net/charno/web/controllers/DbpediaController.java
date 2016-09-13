@@ -1,6 +1,7 @@
 package net.charno.web.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class DbpediaController {
 
     @RequestMapping(value="/lookup/{term}")
-    public String lookupTerm(@PathVariable String term, ModelAndView model) {
-        model.addObject(term);
+    public String lookupTerm(@PathVariable String term, ModelMap model) {
+        model.addAttribute(term);
         return "dbpedia-term";
     }
 }
